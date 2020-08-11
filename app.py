@@ -10,6 +10,7 @@ import pandas as pd
 app = Flask(__name__)
 app.secret_key = "hello"
 import httplib2
+from PIL import Image
 
 config = {
 	"apiKey": "AIzaSyDcIab8JfwOMLUdeOIE4n8SpWqW3_S-GVM",
@@ -27,7 +28,7 @@ config = {
 
 http = httplib2.Http()
 http.redirect_codes = http.redirect_codes - {308}
-FBConn = firebase.FirebaseApplication('https://ertos-final-be.firebaseio.com/')
+FBConn = firebase.FirebaseApplication('https://talentsetu-a4710.firebaseio.com/')
 
 firebase = pyrebase.initialize_app(config)
 storage = firebase.storage()
@@ -289,7 +290,7 @@ def info():
 	print(datta)
 	print(i)
 	db.child('/count_data/').child(i).update(datta)
-	uploads = '/home/ubuntu/Documents/aadhar_pancard_ocr_python/static/'
+	uploads = '/home/ubuntu/python-scanner-aws/static/'
 	app.config['uploads'] = uploads
 	if request.method == "POST":
 		if request.form['upload']=="Upload":
@@ -297,7 +298,7 @@ def info():
 			foo = Image.open(uploaddd)
 			foo = foo.resize((300,300),Image.ANTIALIAS)
 			print(foo)
-			foo.save('/home/ubuntu/Documents/aadhar_pancard_ocr_python/static/'+str(da)+'Aadhar_Front.jpg',optimize=True,quality=95)
+			foo.save('/home/ubuntu/python-scanner-aws/static/'+str(da)+'Aadhar_Front.jpg',optimize=True,quality=95)
 			# spl = os.path.basename('E:\PROJECT\\aadhar_OCR\\'+str(da)+'ima.jpg')
 			# print(spl)
 			# spll = spl.split(".")
@@ -306,7 +307,7 @@ def info():
 			# print(filena)
 
 			# uploaddd.save(os.path.join(app.config['uploads'], filena))
-			storage.child(str(da)+'Aadhar_Front.jpg').put('/home/ubuntu/Documents/aadhar_pancard_ocr_python/static/'+str(da)+'Aadhar_Front.jpg')
+			storage.child(str(da)+'Aadhar_Front.jpg').put('/home/ubuntu/python-scanner-aws/static/'+str(da)+'Aadhar_Front.jpg')
 			filena = str(da)+'Aadhar_Front.jpg'
 			# storage = firebase.storage()
 			data_a = filena.split(".")
@@ -321,7 +322,7 @@ def info():
 			foos = Image.open(uploa)
 			foos = foos.resize((300,300),Image.ANTIALIAS)
 			print(foos)
-			foos.save('/home/ubuntu/Documents/aadhar_pancard_ocr_python/static/'+str(da)+'Aadhar_Back.jpg',optimize=True,quality=95)
+			foos.save('/home/ubuntu/python-scanner-aws/static/'+str(da)+'Aadhar_Back.jpg',optimize=True,quality=95)
 			# spl = os.path.basename('E:\PROJECT\\aadhar_OCR\\'+str(da)+'ima.jpg')
 			# print(spl)
 			# spll = spl.split(".")
@@ -330,7 +331,7 @@ def info():
 			# print(filena)
 
 			# uploaddd.save(os.path.join(app.config['uploads'], filena))
-			storage.child(str(da)+'Aadhar_Back.jpg').put('/home/ubuntu/Documents/aadhar_pancard_ocr_python/static/'+str(da)+'Aadhar_Back.jpg')
+			storage.child(str(da)+'Aadhar_Back.jpg').put('/home/ubuntu/python-scanner-aws/static/'+str(da)+'Aadhar_Back.jpg')
 			filena = str(da)+'Aadhar_Back.jpg'
 			# storage = firebase.storage()
 			data_a = filena.split(".")
@@ -345,7 +346,7 @@ def info():
 			fooss = Image.open(uploads)
 			fooss = fooss.resize((300,300),Image.ANTIALIAS)
 			print(fooss)
-			fooss.save('/home/ubuntu/Documents/aadhar_pancard_ocr_python/static/'+str(da)+'Proof.jpg',optimize=True,quality=95)
+			fooss.save('/home/ubuntu/python-scanner-aws/static/'+str(da)+'Proof.jpg',optimize=True,quality=95)
 			# spl = os.path.basename('E:\PROJECT\\aadhar_OCR\\'+str(da)+'ima.jpg')
 			# print(spl)
 			# spll = spl.split(".")
@@ -354,7 +355,7 @@ def info():
 			# print(filena)
 
 			# uploaddd.save(os.path.join(app.config['uploads'], filena))
-			storage.child(str(da)+'Proof.jpg').put('/home/ubuntu/Documents/aadhar_pancard_ocr_python/static/'+str(da)+'Proof.jpg')
+			storage.child(str(da)+'Proof.jpg').put('/home/ubuntu/python-scanner-aws/static/'+str(da)+'Proof.jpg')
 			filena = str(da)+'Proof.jpg'
 			# storage = firebase.storage()
 			data_a = filena.split(".")
@@ -369,7 +370,7 @@ def info():
 			foosss = Image.open(uploadss)
 			foosss = foosss.resize((300,300),Image.ANTIALIAS)
 			print(foosss)
-			foosss.save('/home/ubuntu/Documents/aadhar_pancard_ocr_python/static/'+str(da)+'Cheque.jpg',optimize=True,quality=95)
+			foosss.save('/home/ubuntu/python-scanner-aws/static/'+str(da)+'Cheque.jpg',optimize=True,quality=95)
 			# spl = os.path.basename('E:\PROJECT\\aadhar_OCR\\'+str(da)+'ima.jpg')
 			# print(spl)
 			# spll = spl.split(".")
@@ -378,7 +379,7 @@ def info():
 			# print(filena)
 
 			# uploaddd.save(os.path.join(app.config['uploads'], filena))
-			storage.child(str(da)+'Cheque.jpg').put('/home/ubuntu/Documents/aadhar_pancard_ocr_python/static/'+str(da)+'Cheque.jpg')
+			storage.child(str(da)+'Cheque.jpg').put('/home/ubuntu/python-scanner-aws/static/'+str(da)+'Cheque.jpg')
 			filena = str(da)+'Cheque.jpg'
 			# storage = firebase.storage()
 			data_a = filena.split(".")
@@ -393,7 +394,7 @@ def info():
 			foossss = Image.open(upl)
 			foossss = foossss.resize((300,300),Image.ANTIALIAS)
 			print(foossss)
-			foossss.save('/home/ubuntu/Documents/aadhar_pancard_ocr_python/static/'+str(da)+'Degree.jpg',optimize=True,quality=95)
+			foossss.save('/home/ubuntu/python-scanner-aws/static/'+str(da)+'Degree.jpg',optimize=True,quality=95)
 			# spl = os.path.basename('E:\PROJECT\\aadhar_OCR\\'+str(da)+'ima.jpg')
 			# print(spl)
 			# spll = spl.split(".")
@@ -402,7 +403,7 @@ def info():
 			# print(filena)
 
 			# uploaddd.save(os.path.join(app.config['uploads'], filena))
-			storage.child(str(da)+'Degree.jpg').put('/home/ubuntu/Documents/aadhar_pancard_ocr_python/static/'+str(da)+'Degree.jpg')
+			storage.child(str(da)+'Degree.jpg').put('/home/ubuntu/python-scanner-aws/static/'+str(da)+'Degree.jpg')
 			filena = str(da)+'Degree.jpg'
 			# storage = firebase.storage()
 			data_a = filena.split(".")
@@ -414,6 +415,7 @@ def info():
 					degree_url= data_url
 
 			c_name = request.form['cname']
+			s_name = request.form['sname']
 			emp_no = request.form['emp']
 			talent = request.form['talent']
 			join_date = request.form['joining_date']
@@ -453,7 +455,8 @@ def info():
 			OLD_ESIC = request.form['OLD_ESIC']
 			edu = request.form.get('edu')
 			dataa = {
-			'Company Name':c_name,
+			'Client Name':c_name,
+			'Supervisor Name':s_name,
 			'Employee No':emp_no,
 			'talent':talent,
 			'Date of Joinig':join_date,
